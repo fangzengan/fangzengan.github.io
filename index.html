@@ -246,7 +246,62 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h5 id="tabbar是一种简介明了的展示方式-有时候我们需要将特殊的按钮放置在上面-那么我们就需要自定义tabbar"><a href="#tabbar是一种简介明了的展示方式-有时候我们需要将特殊的按钮放置在上面-那么我们就需要自定义tabbar" class="headerlink" title="tabbar是一种简介明了的展示方式 有时候我们需要将特殊的按钮放置在上面 那么我们就需要自定义tabbar"></a>tabbar是一种简介明了的展示方式 有时候我们需要将特殊的按钮放置在上面 那么我们就需要自定义tabbar</h5><p>首先创建一个继承与系统的UITabbar的类</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2385602-6a6a3badb191b095.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<blockquote>
+<p>.h</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line">@interface FACustomTabbar : UITabBar</div><div class="line">/// customBtn (居中的) 给出可自定义的按钮</div><div class="line">@property (nonatomic, strong)UIButton *customBtn;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<blockquote>
+<p>.m</p>
+</blockquote>
+<pre><code>#import &quot;FACustomTabbar.h&quot;
+
+@interface FACustomTabbar ()
+@end
+
+@implementation FACustomTabbar
+// 实现懒加载按钮 不加载的 就跟正常的tabbar没什么区别
+- (UIButton *)customBtn{
+if (!_customBtn) {
+_customBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+[self addSubview:_customBtn];
+}
+return _customBtn;
+}
+
+//  重新布局
+- (void)layoutSubviews {
+[super layoutSubviews];
+if (_customBtn) {
+/**** 设置所有UITabBarButton的frame ****/
+// 按钮的尺寸
+CGFloat buttonW = self.frame.size.width / (self.subviews.count - 1);
+CGFloat buttonH = self.frame.size.height;
+CGFloat buttonY = 0;
+// 按钮索引
+int buttonIndex = 0;
+
+for (UIView *subview in self.subviews) {
+// 过滤掉非UITabBarButton
+if (subview.class != NSClassFromString(@&quot;UITabBarButton&quot;)) continue;
+// 设置frame
+CGFloat buttonX = buttonIndex * buttonW;
+// 把发布按钮的位置预留出来
+if (buttonIndex &gt;= ((self.subviews.count-2)/2)) { // 右边的2个UITabBarButton
+buttonX += buttonW;
+}
+subview.frame = CGRectMake(buttonX, buttonY, buttonW, buttonH);
+// 增加索引
+buttonIndex++;
+}
+/**** 设置中间的发布按钮的frame ****/
+self.customBtn.frame = CGRectMake(0, 0, buttonW, buttonH);
+self.customBtn.center = CGPointMake(self.frame.size.width * 0.5, self.frame.size.height * 0.5);
+}
+}
+</code></pre><p>就此完毕，如果有更好的意见， 欢迎留言。  谢谢！</p>
+
       
     </div>
     
