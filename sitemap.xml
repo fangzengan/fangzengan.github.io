@@ -1,32 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
-  <url>
-    <loc>http://yoursite.com/2017/08/16/My-New-Post-1/</loc>
-    
-    <lastmod>2017-08-16T10:11:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/08/16/My-New-Post/</loc>
-    
-    <lastmod>2017-08-16T10:08:13.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/08/16/article-title/</loc>
-    
-    <lastmod>2017-08-16T10:04:59.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/08/16/hello-world/</loc>
-    
-    <lastmod>2017-08-16T07:32:16.000Z</lastmod>
-    
-  </url>
-  
 </urlset>
