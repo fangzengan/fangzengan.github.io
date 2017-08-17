@@ -246,7 +246,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>1、输入过后它可能会报：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[!] Unable to find a pod with name, author, summary, or descriptionmatching `AFNetworking`</div></pre></td></tr></table></figure>
+<blockquote>
+<p>解决方案是：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">输入：rm ~/Library/Caches/CocoaPods/search_index.json</div></pre></td></tr></table></figure>
+<p>后在一次输入：pod search AFNetworking</p>
+<p>就可以了。</p>
+<blockquote>
+<p>还有更多问题，日后持续更新，欢迎补充！</p>
+</blockquote>
+
       
     </div>
     
